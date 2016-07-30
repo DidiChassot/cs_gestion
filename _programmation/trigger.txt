@@ -1,0 +1,52 @@
+
+/*** TRIGGER SQL pour la programmation***/
+// 
+//Cindy Chassot 23.03.2015
+//© Cinémathèque suisse
+
+
+CREATE TRIGGER after_update_pm_cartouche AFTER UPDATE
+ON pm_cartouche FOR EACH ROW
+
+BEGIN
+IF OLD.edition IS NOT NULL
+THEN
+    INSERT INTO pm_trigger_cycle (
+        id_cycle,
+        info_old,
+        info_new,
+        login,
+        datetime
+    )
+    VALUES (
+        OLD.id_cycle,
+        CONCAT(OLD.intro, '£', OLD.notule, '£', OLD.presence, '£', OLD.photo, '£', OLD.logo, '£', OLD.bat, '£', OLD.info), 
+        CONCAT(NEW.intro, '£', NEW.notule, '£', NEW.presence, '£', NEW.photo, '£', NEW.logo, '£', NEW.bat, '£', NEW.info), 
+        OLD.edition,
+        NOW()
+    );
+END IF;
+END
+--------------------------------------------------------------------------------------------------------------------------
+CREATE TRIGGER after_update_pm_cycle AFTER UPDATE
+ON pm_cycle FOR EACH ROW
+
+BEGIN
+IF OLD.edition IS NOT NULL
+THEN
+    INSERT INTO pm_trigger_cycle (
+        id_cycle,
+        info_old,
+        info_new,
+        login,
+        datetime
+    )
+    VALUES (
+        OLD.id_cycle,
+        CONCAT(OLD.commentaire), 
+        CONCAT(NEW.commentaire), 
+        OLD.edition,
+        NOW()
+    );
+END IF;
+END

@@ -1,0 +1,1316 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+<title>Gestion des applications</title>
+<link href='_programmation/_sm3/css/fullcalendar.css' rel='stylesheet' />
+<link href='_programmation/_sm3/css/fullcalendar.print.css' rel='stylesheet' media='print' />
+<script src='_programmation/_sm3/js/moment.min.js'></script>
+<script src='_programmation/js/jquery.min.js'></script>
+<script src='_programmation/js/jquery-ui.custom.min.js'></script>
+<script src='_programmation/_sm3/js/fullcalendar.js'></script>
+<script src='_programmation/_sm3/js/fr.js'></script>
+<style>
+#menu-accordeon {
+  padding:0;
+  margin:0;
+  list-style:none;
+  text-align: center;
+  width: 180px;
+}
+
+#menu-accordeon li {
+   background-color:#729EBF; 
+   background-image:-webkit-linear-gradient(top, #729EBF 0%, #333A40 100%);
+   background-image: linear-gradient(to bottom, #729EBF 0%, #333A40 100%);
+   border-radius: 6px;
+   margin-bottom:2px;
+   box-shadow: 3px 3px 3px #999;
+   border:solid 1px #333A40
+}
+#menu-accordeon li div {
+   max-height:0;
+   overflow: hidden;
+   transition: all .5s;
+   border-radius:0;
+   background: #444;
+   box-shadow: none;
+   border:none;
+   margin:0
+}
+#menu-accordeon a {
+  display:block;
+  text-decoration: none;
+  color: #fff;
+  padding: 8px 0;
+  font-family: verdana;
+  font-size:1.2em
+}
+#menu-accordeon ul li a, #menu-accordeon li:hover div a {
+  font-size:1em
+}
+#menu-accordeon li:hover {
+   background: #729EBF
+}
+#menu-accordeon li div:hover {
+   background: #999;
+}
+#menu-accordeon ul li:last-child {
+   border-radius: 0 0 6px 6px;
+   border:none;
+}
+#menu-accordeon li:hover div {
+  max-height: 15em;
+}
+</style>
+
+<script>
+	$(document).ready(function() {
+		
+		/* initialize the external events
+		-----------------------------------------------------------------*/
+	
+		$('#external-events .fc-event').each(function() {
+		
+			// create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+			// it doesn't need to have a start or end
+			var eventObject = {
+				title: $.trim($(this).text()), // use the element's text as the event title
+				id: $.trim($(this).attr('value')), // utilise la valeur de l'attribue "value" pour l'id du film
+				cycle: $.trim($(this).attr('cycle')), // utilise la valeur de l'attribue "cycle" pour l'id du cycle
+				cat: 'mov',
+			};
+			
+			// store the Event Object in the DOM element so we can get to it later
+			$(this).data('eventObject', eventObject);
+			
+			// make the event draggable using jQuery UI
+			$(this).draggable({
+				zIndex: 999,
+				revert: true,      // will cause the event to go back to its
+				revertDuration: 0  //  original position after the drag
+			});
+			
+		});
+		$('#panier .fc-event').each(function() {
+			var eventObject = {
+				title: $.trim($(this).text()), // use the element's text as the event title
+				id: $.trim($(this).attr('value')), // utilise la valeur de l'attribue "value" pour l'id de l'événement
+				cycle: 0, // valeur 0
+				cat: 'pan',
+			};
+			
+			$(this).data('eventObject', eventObject);
+			
+			$(this).draggable({
+				zIndex: 999,
+				revert: true,      // will cause the event to go back to its
+				revertDuration: 0  //  original position after the drag
+			});
+			
+		});
+		$('#corbeille .fc-event').each(function() {
+			var eventObject = {
+				title: $.trim($(this).text()), // use the element's text as the event title
+				id: $.trim($(this).attr('value')), // utilise la valeur de l'attribue "value" pour l'id de l'événement
+				cycle: 0, // valeur 0
+				cat: 'corb',
+			};
+			
+			$(this).data('eventObject', eventObject);
+			
+			$(this).draggable({
+				zIndex: 999,
+				revert: true,      // will cause the event to go back to its
+				revertDuration: 0  //  original position after the drag
+			});
+			
+		});
+	
+		
+		/* initialize the calendar
+		-----------------------------------------------------------------*/
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			defaultDate: '2014-11-01', //Récupération de la variable date du jour/date sélectionnée
+			editable: true,
+			//events: "http://localhost/calendar/event.php",
+			events: [
+                {
+                        id_seance: '198',
+                        title: ' ',
+                        start: '2014-11-01 15:00:00',
+                        end: '2014-11-01 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '199',
+                        title: ' ',
+                        start: '2014-11-01 18:30:00',
+                        end: '2014-11-01 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '200',
+                        title: ' ',
+                        start: '2014-11-01 21:00:00',
+                        end: '2014-11-01 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '201',
+                        title: ' ',
+                        start: '2014-11-02 15:00:00',
+                        end: '2014-11-02 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '202',
+                        title: ' ',
+                        start: '2014-11-02 18:30:00',
+                        end: '2014-11-02 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '203',
+                        title: ' ',
+                        start: '2014-11-02 21:00:00',
+                        end: '2014-11-02 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '204',
+                        title: ' ',
+                        start: '2014-11-03 15:00:00',
+                        end: '2014-11-03 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '205',
+                        title: ' ',
+                        start: '2014-11-03 18:30:00',
+                        end: '2014-11-03 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '206',
+                        title: ' ',
+                        start: '2014-11-03 21:00:00',
+                        end: '2014-11-03 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '207',
+                        title: ' ',
+                        start: '2014-11-04 15:00:00',
+                        end: '2014-11-04 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '208',
+                        title: ' ',
+                        start: '2014-11-04 18:30:00',
+                        end: '2014-11-04 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '209',
+                        title: ' ',
+                        start: '2014-11-04 21:00:00',
+                        end: '2014-11-04 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '210',
+                        title: ' ',
+                        start: '2014-11-05 15:00:00',
+                        end: '2014-11-05 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '211',
+                        title: ' ',
+                        start: '2014-11-05 18:30:00',
+                        end: '2014-11-05 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '212',
+                        title: ' ',
+                        start: '2014-11-05 21:00:00',
+                        end: '2014-11-05 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '213',
+                        title: ' ',
+                        start: '2014-11-06 15:00:00',
+                        end: '2014-11-06 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '214',
+                        title: ' ',
+                        start: '2014-11-06 18:30:00',
+                        end: '2014-11-06 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '215',
+                        title: '1 Lullaby to My Father',
+                        start: '2014-11-06 20:30:00',
+                        end: '2014-11-06 22:27:00',borderColor: '#000a01',backgroundColor: '#0000ff',  },
+                {
+                        id_seance: '216',
+                        title: ' ',
+                        start: '2014-11-07 15:00:00',
+                        end: '2014-11-07 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '217',
+                        title: ' ',
+                        start: '2014-11-07 18:30:00',
+                        end: '2014-11-07 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '218',
+                        title: ' ',
+                        start: '2014-11-07 21:00:00',
+                        end: '2014-11-07 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '219',
+                        title: ' ',
+                        start: '2014-11-08 15:00:00',
+                        end: '2014-11-08 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '220',
+                        title: ' ',
+                        start: '2014-11-08 18:30:00',
+                        end: '2014-11-08 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '221',
+                        title: ' ',
+                        start: '2014-11-08 21:00:00',
+                        end: '2014-11-08 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '222',
+                        title: ' ',
+                        start: '2014-11-09 15:00:00',
+                        end: '2014-11-09 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '223',
+                        title: ' ',
+                        start: '2014-11-09 18:30:00',
+                        end: '2014-11-09 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '224',
+                        title: ' ',
+                        start: '2014-11-09 21:00:00',
+                        end: '2014-11-09 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '225',
+                        title: ' ',
+                        start: '2014-11-10 15:00:00',
+                        end: '2014-11-10 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '226',
+                        title: ' ',
+                        start: '2014-11-10 18:30:00',
+                        end: '2014-11-10 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '227',
+                        title: ' ',
+                        start: '2014-11-10 21:00:00',
+                        end: '2014-11-10 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '228',
+                        title: ' ',
+                        start: '2014-11-11 15:00:00',
+                        end: '2014-11-11 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '229',
+                        title: ' ',
+                        start: '2014-11-11 18:30:00',
+                        end: '2014-11-11 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '230',
+                        title: ' ',
+                        start: '2014-11-11 21:00:00',
+                        end: '2014-11-11 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '231',
+                        title: ' ',
+                        start: '2014-11-12 15:00:00',
+                        end: '2014-11-12 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '232',
+                        title: ' ',
+                        start: '2014-11-12 18:30:00',
+                        end: '2014-11-12 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '233',
+                        title: ' ',
+                        start: '2014-11-12 21:00:00',
+                        end: '2014-11-12 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '234',
+                        title: ' ',
+                        start: '2014-11-13 15:00:00',
+                        end: '2014-11-13 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '235',
+                        title: ' ',
+                        start: '2014-11-13 18:30:00',
+                        end: '2014-11-13 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '236',
+                        title: ' ',
+                        start: '2014-11-13 21:00:00',
+                        end: '2014-11-13 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '237',
+                        title: ' ',
+                        start: '2014-11-14 15:00:00',
+                        end: '2014-11-14 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '238',
+                        title: ' ',
+                        start: '2014-11-14 18:30:00',
+                        end: '2014-11-14 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '239',
+                        title: ' ',
+                        start: '2014-11-14 21:00:00',
+                        end: '2014-11-14 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '240',
+                        title: ' ',
+                        start: '2014-11-15 15:00:00',
+                        end: '2014-11-15 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '241',
+                        title: ' ',
+                        start: '2014-11-15 18:30:00',
+                        end: '2014-11-15 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '242',
+                        title: ' ',
+                        start: '2014-11-15 21:00:00',
+                        end: '2014-11-15 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '243',
+                        title: ' ',
+                        start: '2014-11-16 15:00:00',
+                        end: '2014-11-16 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '244',
+                        title: ' ',
+                        start: '2014-11-16 18:30:00',
+                        end: '2014-11-16 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '245',
+                        title: ' ',
+                        start: '2014-11-16 21:00:00',
+                        end: '2014-11-16 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '246',
+                        title: ' ',
+                        start: '2014-11-17 15:00:00',
+                        end: '2014-11-17 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '247',
+                        title: ' ',
+                        start: '2014-11-17 18:30:00',
+                        end: '2014-11-17 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '248',
+                        title: ' ',
+                        start: '2014-11-17 21:00:00',
+                        end: '2014-11-17 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '249',
+                        title: ' ',
+                        start: '2014-11-18 15:00:00',
+                        end: '2014-11-18 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '250',
+                        title: ' ',
+                        start: '2014-11-18 18:30:00',
+                        end: '2014-11-18 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '251',
+                        title: ' ',
+                        start: '2014-11-18 21:00:00',
+                        end: '2014-11-18 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '252',
+                        title: ' ',
+                        start: '2014-11-19 15:00:00',
+                        end: '2014-11-19 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '253',
+                        title: ' ',
+                        start: '2014-11-19 18:30:00',
+                        end: '2014-11-19 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '254',
+                        title: ' ',
+                        start: '2014-11-19 21:00:00',
+                        end: '2014-11-19 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '255',
+                        title: ' ',
+                        start: '2014-11-20 15:00:00',
+                        end: '2014-11-20 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '256',
+                        title: ' ',
+                        start: '2014-11-20 18:30:00',
+                        end: '2014-11-20 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '257',
+                        title: ' ',
+                        start: '2014-11-20 21:00:00',
+                        end: '2014-11-20 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '258',
+                        title: ' ',
+                        start: '2014-11-21 15:00:00',
+                        end: '2014-11-21 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '259',
+                        title: ' ',
+                        start: '2014-11-21 18:30:00',
+                        end: '2014-11-21 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '260',
+                        title: ' ',
+                        start: '2014-11-21 21:00:00',
+                        end: '2014-11-21 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '261',
+                        title: ' ',
+                        start: '2014-11-22 15:00:00',
+                        end: '2014-11-22 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '262',
+                        title: ' ',
+                        start: '2014-11-22 18:30:00',
+                        end: '2014-11-22 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '263',
+                        title: ' ',
+                        start: '2014-11-22 21:00:00',
+                        end: '2014-11-22 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '264',
+                        title: ' ',
+                        start: '2014-11-23 15:00:00',
+                        end: '2014-11-23 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '265',
+                        title: ' ',
+                        start: '2014-11-23 18:30:00',
+                        end: '2014-11-23 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '266',
+                        title: ' ',
+                        start: '2014-11-23 21:00:00',
+                        end: '2014-11-23 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '267',
+                        title: ' ',
+                        start: '2014-11-24 15:00:00',
+                        end: '2014-11-24 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '268',
+                        title: ' ',
+                        start: '2014-11-24 18:30:00',
+                        end: '2014-11-24 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '269',
+                        title: ' ',
+                        start: '2014-11-24 21:00:00',
+                        end: '2014-11-24 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '270',
+                        title: ' ',
+                        start: '2014-11-25 15:00:00',
+                        end: '2014-11-25 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '271',
+                        title: ' ',
+                        start: '2014-11-25 18:30:00',
+                        end: '2014-11-25 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '272',
+                        title: ' ',
+                        start: '2014-11-25 21:00:00',
+                        end: '2014-11-25 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '273',
+                        title: ' ',
+                        start: '2014-11-26 15:00:00',
+                        end: '2014-11-26 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '274',
+                        title: ' ',
+                        start: '2014-11-26 18:30:00',
+                        end: '2014-11-26 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '275',
+                        title: '1 ARCHITECTURE EN ISRAËL',
+                        start: '2014-11-26 20:30:00',
+                        end: '2014-11-26 22:00:00',backgroundColor: '#0000ff',  },
+                {
+                        id_seance: '276',
+                        title: ' ',
+                        start: '2014-11-27 15:00:00',
+                        end: '2014-11-27 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '277',
+                        title: ' ',
+                        start: '2014-11-27 18:30:00',
+                        end: '2014-11-27 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '278',
+                        title: ' ',
+                        start: '2014-11-27 21:00:00',
+                        end: '2014-11-27 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '279',
+                        title: ' ',
+                        start: '2014-11-28 15:00:00',
+                        end: '2014-11-28 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '280',
+                        title: ' ',
+                        start: '2014-11-28 18:30:00',
+                        end: '2014-11-28 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '281',
+                        title: ' ',
+                        start: '2014-11-28 21:00:00',
+                        end: '2014-11-28 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '282',
+                        title: ' ',
+                        start: '2014-11-29 15:00:00',
+                        end: '2014-11-29 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '283',
+                        title: ' ',
+                        start: '2014-11-29 18:30:00',
+                        end: '2014-11-29 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '284',
+                        title: ' ',
+                        start: '2014-11-29 21:00:00',
+                        end: '2014-11-29 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '285',
+                        title: ' ',
+                        start: '2014-11-30 15:00:00',
+                        end: '2014-11-30 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '286',
+                        title: ' ',
+                        start: '2014-11-30 18:30:00',
+                        end: '2014-11-30 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '287',
+                        title: ' ',
+                        start: '2014-11-30 21:00:00',
+                        end: '2014-11-30 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '288',
+                        title: ' ',
+                        start: '2014-12-01 15:00:00',
+                        end: '2014-12-01 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '289',
+                        title: ' ',
+                        start: '2014-12-01 18:30:00',
+                        end: '2014-12-01 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '290',
+                        title: ' ',
+                        start: '2014-12-01 21:00:00',
+                        end: '2014-12-01 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '291',
+                        title: ' ',
+                        start: '2014-12-02 15:00:00',
+                        end: '2014-12-02 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '292',
+                        title: ' ',
+                        start: '2014-12-02 18:30:00',
+                        end: '2014-12-02 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '293',
+                        title: ' ',
+                        start: '2014-12-02 21:00:00',
+                        end: '2014-12-02 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '294',
+                        title: ' ',
+                        start: '2014-12-03 15:00:00',
+                        end: '2014-12-03 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '295',
+                        title: ' ',
+                        start: '2014-12-03 18:30:00',
+                        end: '2014-12-03 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '296',
+                        title: ' ',
+                        start: '2014-12-03 21:00:00',
+                        end: '2014-12-03 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '297',
+                        title: ' ',
+                        start: '2014-12-04 15:00:00',
+                        end: '2014-12-04 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '298',
+                        title: ' ',
+                        start: '2014-12-04 18:30:00',
+                        end: '2014-12-04 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '299',
+                        title: '1 Tsili',
+                        start: '2014-12-04 20:30:00',
+                        end: '2014-12-04 21:58:00',borderColor: '#000a01',backgroundColor: '#0000ff',  },
+                {
+                        id_seance: '300',
+                        title: ' ',
+                        start: '2014-12-05 15:00:00',
+                        end: '2014-12-05 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '301',
+                        title: ' ',
+                        start: '2014-12-05 18:30:00',
+                        end: '2014-12-05 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '302',
+                        title: ' ',
+                        start: '2014-12-05 21:00:00',
+                        end: '2014-12-05 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '303',
+                        title: ' ',
+                        start: '2014-12-06 15:00:00',
+                        end: '2014-12-06 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '304',
+                        title: ' ',
+                        start: '2014-12-06 18:30:00',
+                        end: '2014-12-06 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '305',
+                        title: ' ',
+                        start: '2014-12-06 21:00:00',
+                        end: '2014-12-06 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '306',
+                        title: ' ',
+                        start: '2014-12-07 15:00:00',
+                        end: '2014-12-07 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '307',
+                        title: ' ',
+                        start: '2014-12-07 18:30:00',
+                        end: '2014-12-07 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '308',
+                        title: ' ',
+                        start: '2014-12-07 21:00:00',
+                        end: '2014-12-07 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '309',
+                        title: ' ',
+                        start: '2014-12-08 15:00:00',
+                        end: '2014-12-08 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '310',
+                        title: ' ',
+                        start: '2014-12-08 18:30:00',
+                        end: '2014-12-08 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '311',
+                        title: ' ',
+                        start: '2014-12-08 21:00:00',
+                        end: '2014-12-08 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '312',
+                        title: ' ',
+                        start: '2014-12-09 15:00:00',
+                        end: '2014-12-09 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '313',
+                        title: ' ',
+                        start: '2014-12-09 18:30:00',
+                        end: '2014-12-09 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '314',
+                        title: ' ',
+                        start: '2014-12-09 21:00:00',
+                        end: '2014-12-09 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '315',
+                        title: ' ',
+                        start: '2014-12-10 15:00:00',
+                        end: '2014-12-10 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '316',
+                        title: ' ',
+                        start: '2014-12-10 18:30:00',
+                        end: '2014-12-10 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '317',
+                        title: ' ',
+                        start: '2014-12-10 21:00:00',
+                        end: '2014-12-10 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '318',
+                        title: ' ',
+                        start: '2014-12-11 15:00:00',
+                        end: '2014-12-11 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '319',
+                        title: ' ',
+                        start: '2014-12-11 18:30:00',
+                        end: '2014-12-11 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '320',
+                        title: ' ',
+                        start: '2014-12-11 21:00:00',
+                        end: '2014-12-11 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '321',
+                        title: ' ',
+                        start: '2014-12-12 15:00:00',
+                        end: '2014-12-12 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '322',
+                        title: ' ',
+                        start: '2014-12-12 18:30:00',
+                        end: '2014-12-12 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '323',
+                        title: ' ',
+                        start: '2014-12-12 21:00:00',
+                        end: '2014-12-12 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '324',
+                        title: ' ',
+                        start: '2014-12-13 15:00:00',
+                        end: '2014-12-13 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '325',
+                        title: ' ',
+                        start: '2014-12-13 18:30:00',
+                        end: '2014-12-13 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '326',
+                        title: ' ',
+                        start: '2014-12-13 21:00:00',
+                        end: '2014-12-13 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '327',
+                        title: ' ',
+                        start: '2014-12-14 15:00:00',
+                        end: '2014-12-14 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '328',
+                        title: ' ',
+                        start: '2014-12-14 18:30:00',
+                        end: '2014-12-14 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '329',
+                        title: ' ',
+                        start: '2014-12-14 21:00:00',
+                        end: '2014-12-14 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '330',
+                        title: ' ',
+                        start: '2014-12-15 15:00:00',
+                        end: '2014-12-15 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '331',
+                        title: ' ',
+                        start: '2014-12-15 18:30:00',
+                        end: '2014-12-15 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '332',
+                        title: ' ',
+                        start: '2014-12-15 21:00:00',
+                        end: '2014-12-15 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '333',
+                        title: ' ',
+                        start: '2014-12-16 15:00:00',
+                        end: '2014-12-16 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '334',
+                        title: ' ',
+                        start: '2014-12-16 18:30:00',
+                        end: '2014-12-16 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '335',
+                        title: ' ',
+                        start: '2014-12-16 21:00:00',
+                        end: '2014-12-16 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '336',
+                        title: ' ',
+                        start: '2014-12-17 15:00:00',
+                        end: '2014-12-17 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '337',
+                        title: ' ',
+                        start: '2014-12-17 18:30:00',
+                        end: '2014-12-17 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '338',
+                        title: ' ',
+                        start: '2014-12-17 21:00:00',
+                        end: '2014-12-17 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '339',
+                        title: ' ',
+                        start: '2014-12-18 15:00:00',
+                        end: '2014-12-18 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '340',
+                        title: ' ',
+                        start: '2014-12-18 18:30:00',
+                        end: '2014-12-18 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '341',
+                        title: ' ',
+                        start: '2014-12-18 21:00:00',
+                        end: '2014-12-18 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '342',
+                        title: ' ',
+                        start: '2014-12-19 15:00:00',
+                        end: '2014-12-19 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '343',
+                        title: ' ',
+                        start: '2014-12-19 18:30:00',
+                        end: '2014-12-19 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '344',
+                        title: ' ',
+                        start: '2014-12-19 21:00:00',
+                        end: '2014-12-19 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '345',
+                        title: ' ',
+                        start: '2014-12-20 15:00:00',
+                        end: '2014-12-20 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '346',
+                        title: ' ',
+                        start: '2014-12-20 18:30:00',
+                        end: '2014-12-20 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '347',
+                        title: ' ',
+                        start: '2014-12-20 21:00:00',
+                        end: '2014-12-20 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '348',
+                        title: ' ',
+                        start: '2014-12-21 15:00:00',
+                        end: '2014-12-21 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '349',
+                        title: ' ',
+                        start: '2014-12-21 18:30:00',
+                        end: '2014-12-21 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '350',
+                        title: ' ',
+                        start: '2014-12-21 21:00:00',
+                        end: '2014-12-21 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '351',
+                        title: ' ',
+                        start: '2014-12-22 15:00:00',
+                        end: '2014-12-22 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '352',
+                        title: ' ',
+                        start: '2014-12-22 18:30:00',
+                        end: '2014-12-22 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '353',
+                        title: ' ',
+                        start: '2014-12-22 21:00:00',
+                        end: '2014-12-22 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '354',
+                        title: ' ',
+                        start: '2014-12-23 15:00:00',
+                        end: '2014-12-23 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '355',
+                        title: ' ',
+                        start: '2014-12-23 18:30:00',
+                        end: '2014-12-23 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '356',
+                        title: ' ',
+                        start: '2014-12-23 21:00:00',
+                        end: '2014-12-23 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '357',
+                        title: ' ',
+                        start: '2014-12-24 15:00:00',
+                        end: '2014-12-24 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '358',
+                        title: ' ',
+                        start: '2014-12-24 18:30:00',
+                        end: '2014-12-24 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '359',
+                        title: ' ',
+                        start: '2014-12-24 21:00:00',
+                        end: '2014-12-24 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '360',
+                        title: ' ',
+                        start: '2014-12-25 15:00:00',
+                        end: '2014-12-25 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '361',
+                        title: ' ',
+                        start: '2014-12-25 18:30:00',
+                        end: '2014-12-25 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '362',
+                        title: ' ',
+                        start: '2014-12-25 21:00:00',
+                        end: '2014-12-25 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '363',
+                        title: ' ',
+                        start: '2014-12-26 15:00:00',
+                        end: '2014-12-26 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '364',
+                        title: ' ',
+                        start: '2014-12-26 18:30:00',
+                        end: '2014-12-26 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '365',
+                        title: ' ',
+                        start: '2014-12-26 21:00:00',
+                        end: '2014-12-26 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '366',
+                        title: ' ',
+                        start: '2014-12-27 15:00:00',
+                        end: '2014-12-27 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '367',
+                        title: ' ',
+                        start: '2014-12-27 18:30:00',
+                        end: '2014-12-27 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '368',
+                        title: ' ',
+                        start: '2014-12-27 21:00:00',
+                        end: '2014-12-27 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '369',
+                        title: ' ',
+                        start: '2014-12-28 15:00:00',
+                        end: '2014-12-28 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '370',
+                        title: ' ',
+                        start: '2014-12-28 18:30:00',
+                        end: '2014-12-28 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '371',
+                        title: ' ',
+                        start: '2014-12-28 21:00:00',
+                        end: '2014-12-28 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '372',
+                        title: ' ',
+                        start: '2014-12-29 15:00:00',
+                        end: '2014-12-29 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '373',
+                        title: ' ',
+                        start: '2014-12-29 18:30:00',
+                        end: '2014-12-29 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '374',
+                        title: ' ',
+                        start: '2014-12-29 21:00:00',
+                        end: '2014-12-29 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '375',
+                        title: ' ',
+                        start: '2014-12-30 15:00:00',
+                        end: '2014-12-30 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '376',
+                        title: ' ',
+                        start: '2014-12-30 18:30:00',
+                        end: '2014-12-30 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '377',
+                        title: ' ',
+                        start: '2014-12-30 21:00:00',
+                        end: '2014-12-30 22:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '378',
+                        title: ' ',
+                        start: '2014-12-31 15:00:00',
+                        end: '2014-12-31 16:00:00',backgroundColor: '',  },
+                {
+                        id_seance: '379',
+                        title: ' ',
+                        start: '2014-12-31 18:30:00',
+                        end: '2014-12-31 19:30:00',backgroundColor: '',  },
+                {
+                        id_seance: '380',
+                        title: ' ',
+                        start: '2014-12-31 21:00:00',
+                        end: '2014-12-31 22:00:00',backgroundColor: '',  },],			eventRender: function(event, element) {
+				element.find('.fc-title').html(element.find('.fc-title').text());
+			},
+			timeFormat: 'HH:mm', // uppercase H for 24-hour clock
+			axisFormat: 'HH:mm',
+			scrollTime: '11:00:00',
+			droppable: true, // this allows things to be dropped onto the calendar !!!
+			drop: function(event) { // this function is called when something is dropped
+			
+				// retrieve the dropped element's stored Event Object
+				var originalEventObject = $(this).data('eventObject');
+				
+				//variable de la séance sélectionnée
+				var id_seance = parseInt('') ;
+				
+				$.ajax({
+					url: '_programmation/_sm3/inc/add_movie.php',
+					data: 'id_film='+originalEventObject.id+'&id_seance='+id_seance+'&cat='+originalEventObject.cat+'&cycle='+originalEventObject.cycle ,
+					type: "POST",
+					success: function(json) {
+						//alert("OK");
+						location.reload();
+					}
+				});
+			},
+			
+			selectable: true,
+			selectHelper: true,
+//Ajout de séances
+			select: function(start, end) { //ajout de séances quand on clic sur une case
+				var time = prompt('Heure');
+				if (time) {
+					start = $.fullCalendar.moment(start,moment.ISO_8601).format("YYYY-MM-D")+' '+time; //date du jour + champ
+					end = $.fullCalendar.moment(end,moment.ISO_8601).format("YYYY-MM-D HH:mm:ss");
+					$.ajax({
+						url: '_programmation/_sm3/inc/add_events.php',
+						data: 'start='+start+'&end='+end ,
+						type: "POST",
+						success: function(json) {
+							//alert('OK'); // pop-up d'information "ok"
+							location.reload(); //lancer le rafraichissement de la page
+						}
+					});
+					calendar.fullCalendar('renderEvent',{
+						start: start,
+						end: end,
+						},
+						true // make the event "stick"
+					);
+				}
+				calendar.fullCalendar('unselect');
+			},
+//Clic sur une séance - affichage du formulaire
+			eventClick: function(event) {
+				//récupération de la variable du début de bulletin
+				 var start_bulletin = '2014-11-01' ;
+				 var id_bulletin = '8' ;
+				//Ouverture de la même page avec l'ID de l'événement envoyé en "GET"
+				window.open('index.php?action=clic&start='+start_bulletin+'&id='+event.id_seance+'&id_bulletin='+id_bulletin, '_self');
+			},
+			eventDrop: function(event, delta) {
+					start = $.fullCalendar.moment(event.start).format('YYYY-MM-DD HH:mm:ss');
+					end = $.fullCalendar.moment(event.end).format('YYYY-MM-DD HH:mm:ss');
+				$.ajax({
+					url: '_programmation/_sm3/inc/update_events.php',
+					data: 'start='+ start +'&end='+ end +'&id_seance='+ event.id_seance ,
+					type: "POST",
+					success: function(json) {
+						//alert("OK");
+						//location.reload();
+					}
+				});
+			},
+			eventResize: function(event) {
+					start = $.fullCalendar.moment(event.start).format('YYYY-MM-DD HH:mm:ss');
+					end = $.fullCalendar.moment(event.end).format('YYYY-MM-DD HH:mm:ss');
+				$.ajax({
+					url: '_programmation/_sm3/inc/update_events.php',
+					data: 'start='+ start +'&end='+ end +'&id_seance='+ event.id_seance ,
+					type: "POST",
+					success: function(json) {
+						//alert("OK");
+						//location.reload();
+					}
+				});
+			 
+			},
+// Glisser les films dans une séance
+		});		
+	});
+        
+</script>
+
+<!-- Script pour l'ordre des films dans une séance-->
+<script type="text/javascript">
+$(function() {		
+	$("#listeFilm tbody.content").sortable({
+		placeholder: 'highlight', // classe à ajouter à l'élément fantome
+		update: function(){// callback quand l'ordre de la liste est changé
+			var NewOrder = $('#listeFilm tbody.content').sortable('serialize');// récupération des données à envoyer
+			console.log(NewOrder);
+			//alert(NewOrder);
+			//$.post('ajax.php',NewOrder); // appel ajax au fichier ajax.php avec l'ordre des photos
+			
+			 var id_seance = '' ;
+			
+			//var arrayId = NewOrder.split(',');
+			
+			$.ajax({
+				url: '_programmation/_sm3/inc/update_ordre_film.php',
+				data: NewOrder+'&id_seance='+id_seance ,
+				type: "POST",
+				success: function(json) {
+					//alert(NewOrder);
+					location.reload();
+				}
+			});
+
+		}
+	});		
+	$("#listeFilm tbody.content").disableSelection();
+});
+
+</script> <!--Pour l'éditeur de texte-->
+    <script type="text/javascript" src="js/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript">
+    tinymce.init({
+        selector: "textarea",
+        plugins: [
+            //"advlist autolink lists link image charmap print preview anchor",
+            //"searchreplace visualblocks code fullscreen",
+            //"insertdatetime media table contextmenu paste moxiemanager"
+            "emoticons template paste textcolor colorpicker textpattern"
+        ],
+        toolbar: "bold italic forecolor"
+    });
+    </script>
+    <link href='css/global.css' rel='stylesheet' />
+    <link rel="stylesheet" type="text/css" href="css/print.css" media="print" />
+    
+</head>
+<body>
+    <div id="global"><nav>
+    <ul>
+<li><a href="index.php?onglet=_reservation">Réservations</a></li><li><a href="index.php?onglet=_scolaire">Scolaires</a></li><li><a href="index.php?onglet=_lacs">Email LACS</a></li><li><a href="index.php?onglet=_mailing">Mailings</a></li><li class="actif"><a href="index.php?onglet=_programmation">Programmation</a></li><li><a href="index.php?onglet=_administration">Administration</a></li>    </ul>
+</nav>
+
+<div id="content">    <ul id="sousmenu">
+<li><a href="index.php?sm=_sm0&cat=e&bu=m">Cycles en attente</a></li><li><a href="index.php?sm=_sm1&cat=e&bu=m">Gestion des bulletins</a></li><li><a href="index.php?sm=_sm2&cat=e&bu=m">Programme complet</a></li><li class="actif"><a href="index.php?sm=_sm3&cat=e&bu=m">Calendrier</a></li><li><a href="index.php?sm=_sm4&cat=e&bu=m">Fiches Films</a></li>    </ul>
+	
+	<div id='wrap'>
+	<div id="col_left">
+	<table class="table" cellspacing="0" cellpadding="0">
+	    <thead>
+		<tr>
+		    <th>Bulletin</th>
+		</tr>
+	    </thead>
+	    <tbody>
+<tr><td><a href="/cs_gestion/index.php?action=neutre&id_bulletin=2">281 mars-avril 2015</a></td></tr><tr class="select"><td><a href="/cs_gestion/index.php?action=neutre&id_bulletin=8">279 novembre-décembre 2014</a></td></tr>	    </tbody>
+	</table>
+<!-- LISTE DES BULLETINS-->
+	<form name="select_bulletin" action="index.php" method="GET">
+		<select name="id_bulletin">
+			<option value="">Sélectionnez le bulletin</option>
+<option value="2">281 mars-avril 2015</option><option value="8">279 novembre-d�cembre 2014</option>		</select>
+		<input type="hidden" name="action" value="neutre">
+		<input class="btn" type="submit" value="Sélectionner">
+	</form>
+<hr class="clear">
+<!--Liste des cycles et films-->
+		<div id='external-events'>
+<!-- /LISTE DES BULLETINS-->
+			<h4>Liste des films</h4>
+			<ul class="movie" id="menu-accordeon">
+<li style="border-left:2px solid #0000ff"><span style="border-bottom: 2px solid #0000ff">Amos Gitai</span><div class="fc-event" value="38" cycle="33"><a href="/cs_gestion/index.php?action=film&start=2014-11-01&id_film=38&id_bulletin=8"><span class="numero">1</span>Lullaby to My Father</a></div><div class="fc-event" value="39" cycle="33"><a href="/cs_gestion/index.php?action=film&start=2014-11-01&id_film=39&id_bulletin=8"><span class="numero">1</span>L'Idéologie du kibboutz</a></div><div class="fc-event" value="40" cycle="33"><a href="/cs_gestion/index.php?action=film&start=2014-11-01&id_film=40&id_bulletin=8"><span class="numero">1</span>Les Villes nouvelles</a></div><div class="fc-event" value="41" cycle="33"><a href="/cs_gestion/index.php?action=film&start=2014-11-01&id_film=41&id_bulletin=8"><span class="numero">1</span>Le Projet israélien</a></div><div class="fc-event" value="42" cycle="33"><a href="/cs_gestion/index.php?action=film&start=2014-11-01&id_film=42&id_bulletin=8"><span class="numero">1</span>Le Démantèlement de l'architecture...</a></div><div class="fc-event" value="43" cycle="33"><a href="/cs_gestion/index.php?action=film&start=2014-11-01&id_film=43&id_bulletin=8"><span class="numero">1</span>Tsili</a></div></li>			</ul>
+		</div>
+	</div>
+<!--affichage du calendrier-->
+		<div id='calendar'></div>
+<!--formulaire et panier-->
+		<div id="col_right">
+<!--LISTE DANS LE PANIER-->
+			<table class="table" cellspacing="0" cellpadding="0">
+			<thead>
+			    <tr>
+				<th>Liste dans le panier</th>
+				<th></th>
+			    </tr>
+			</thead>
+			<tbody id="panier">
+<tr>
+			<td><div style="background-color:#dbced9" class="fc-event" value="1">Oasis des mendiants&nbsp;</div></td>
+			<td><form name="modif_seance" action="index.php?action=form&id_bulletin=8" method="POST" onclick="return confirm('voulez-vous vraiment supprimé cette séance?')">
+			    <input name="id_seance" type="hidden" value="1">
+			    <input name="envoi" class="btn_delete" type="submit" value="Delete">
+			    </form></td>
+		      </tr>			</tbody>
+			</table>
+<hr class="clear">
+<!--LISTE DANS LA CORBEILLE-->
+			<table class="table" cellspacing="0" cellpadding="0">
+			<thead>
+			    <tr>
+				<th>Liste dans le corbeille</th>
+				<th></th>
+			    </tr>
+			</thead>
+			<tbody id="corbeille">
+<tr>
+			<td><div style="background-color:#dbced9" class="fc-event" value="24">Oasis des mendiants&nbsp;</div></td>
+			<td><form name="modif_seance" action="index.php?action=form&id_bulletin=8" method="POST" onclick="return confirm('voulez-vous vraiment supprimé cette séance?')">
+			    <input name="id_seance" type="hidden" value="24">
+			    <input name="envoi" class="btn_delete" type="submit" value="Delete">
+			    </form></td>
+		      </tr>			</tbody>
+			</table>
+<hr class="clear">
+				<h3>Ajout d'information</h3>
+			<form name="add_allDay" action="index.php?action=form&id_bulletin=8" method="POST">
+				<div>
+				    <label for="titre"></label>
+				    <input name="titre" type="text" placeholder="Titre">
+				</div>
+				<div>
+				    <label for="start"></label>
+				    <input class="input21" name="start" type="text" placeholder="2015-01-01">
+				    <label for="end"></label>
+				    <input class="input22" name="end" type="text" placeholder="2015-01-01">
+				</div>  
+				<input name="envoi" class="btn" type="submit" value="Envoyer">
+			</form>
+
+	<table class="table" cellspacing="0" cellpadding="0">
+	    <thead>
+		<tr>
+		    <th>Evénements</th>
+		    <th></th>
+		</tr>
+	    </thead>
+	    <tbody>
+			
+	    </tbody>
+	</table>
+
+
+		</div>
+
+		<div style='clear:both'></div>
+		<div>
+</div>
+	</div>
+    </div>
+    <footer>
+        2015 © Cinémathèque suisse | CineSupAdm <a href="index.php?deconnexion=true">déconnexion</a>
+    </footer>    </div>
+</body>
+</html>

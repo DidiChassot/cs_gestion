@@ -1,0 +1,48 @@
+/*** CSS GLOBAL de print **
+Cindy Chassot 21.01.2015 -22.05.2015
+©Cinémathèque suisse
+*/
+
+
+
+#global {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    -webkit-print-color-adjust: exact;
+}
+
+nav {
+    height: 0px;
+    display: none;
+}
+
+nav ul li {
+    display: none;
+    float: left;
+    width: 0px;
+    height: 0px;
+    padding-top: 0px;
+}
+#sousmenu {
+    display: none;
+}
+
+input.btn {
+    display: none;
+}
+
+.mce-toolbar-grp {
+    visibility: hidden;
+    display: none;
+}
+
+hr {
+    margin: 0px;
+    padding: 0px;
+    /*display: none;*/
+}
+
+footer {
+    display: none;
+}

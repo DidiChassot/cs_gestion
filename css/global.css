@@ -1,0 +1,644 @@
+/*** CSS GLOBAL **
+Cindy Chassot 21.01.2015 - 13.04.2015
+©Cinémathèque suisse
+*/
+/*importation des css externes*/
+@import "normalize.css";
+@import "fonts.css";
+
+/****body****/
+
+body {
+    background-color: #e7e7ed;
+    font-size: 12px;
+    font-family: Helvetica,Arial,Verdana,sans-serif;
+    color: #4d4d4d;
+    letter-spacing: 0.02em;
+}
+
+/**** basics styles****/
+#global {
+    min-width: 1020px;
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 30px;
+    background: url(../img/logo_gestion.png) no-repeat top right;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+a {
+    color: #4A4B54;
+    text-decoration: underline;
+}
+    a:hover {
+        color: #CC0033;
+    }
+    .actif {
+        color: #CC0033;
+    }
+
+hr {
+    margin-bottom: 20px;
+    border: none;
+    background: none;
+    border-top: 1px dotted #babac0;
+}
+
+h2 {
+    height: 30px;
+    clear: both;
+    font-size: 21px;
+    color: #CC0033;
+}
+
+h3 {
+    float:left;
+    height: 30px;
+    margin-top: 0px;
+    font-size: 18px;
+}
+
+h4 {
+    height: 30px;
+    margin-top: 0px;
+    font-size:16px;
+    color:#999999;
+}
+
+h5 {
+    padding-bottom: 3px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+strong {
+    font-size: 13px;
+}
+
+.warning {
+    color: #d38001;
+}
+
+.import {
+    font-weight: bold;
+    color: #CC0033;
+}
+
+.info {
+    color: #949494;
+}
+
+.remarque {
+    color: #3f3c75;
+}
+
+.select {
+    background-color: #c1fb73;
+}
+
+.block {
+    display: block;
+}
+
+.clear {
+    clear: both;
+}
+
+/****LOGIN****/
+#login {
+    width:531px;
+    height: 288px;
+    margin: 0px auto;
+    margin-top:60px;
+    padding: 20px;
+    border: 1px solid #babac0;
+    background-color: #fff;
+}
+
+#login h1 {
+    height: 66px;
+    margin-bottom: 30px;
+    padding-left: 60px;
+    font-size: 26px;
+    background: url(../img/picto.jpg) no-repeat;
+    line-height: 60px;
+}
+
+#login label {
+    display: block;
+    float: left;
+    width: 165px;
+    font: bold 16px "NeuzeitOffice";
+    line-height: 25px;
+}
+
+#login input {
+    width: 295px;
+    height: 27px;
+    padding:0px 10px;
+    margin-bottom: 10px;
+    background: none;
+    border: none;
+    border: 1px solid #d5dbe1;
+    box-shadow: -1px 2px 7px 2px rgba(100, 100, 120, 0.1) inset; 
+}
+
+#login input[type="submit"] {
+    display: block;
+    float: right;
+    width: 153px;
+    height: 42px;
+    padding: 0px;
+    margin-right: 35px;
+    background: none;
+    background: url(../img/btn_connexion.jpg) no-repeat;
+    border: none;
+    box-shadow: none;
+    color:transparent;
+}
+
+/****MENU****/
+nav {
+    height: 65px;
+    background: url(../img/bg_menu.png) repeat-x;
+    border-right: 1px solid #e7e7ed;
+    border-left: 1px solid #babac0;
+}
+
+nav ul {
+}
+
+nav ul li {
+    display: block;
+    float: left;
+    width: 166px;
+    height: 50px;
+    padding-top: 15px;
+    background: url(../img/menu.jpg) no-repeat;
+    text-align: center;
+}
+    nav ul li a {
+        font:bold 16px "NeuzeitOffice";
+        color: #4a4b54;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+nav ul li.actif {
+    background-image: url(../img/menu_actif.jpg);
+}
+    nav ul li.actif a {
+        color: #CC0033;
+    }
+
+/****CONTENT****/
+#content {
+    min-width: 980px;
+    padding: 0 20px 20px 20px;
+    border: 1px solid #babac0;
+    border-top: none;
+    background-color: #fff;
+    clear: both;
+}
+/****CONTENT page externe****/
+#contentpage {
+    width: 980px;
+    padding: 0 20px 20px 20px;
+    margin:0px auto;
+    border: 1px solid #babac0;
+    border-top: none;
+    background-color: #fff;
+    clear: both;
+}
+
+/****SOUS-MENU****/
+#sousmenu {
+    height: 22px;
+    margin-bottom: 20px;
+    border-bottom :1px solid #e7e7ed;
+}
+
+#sousmenu li {
+    display: block;
+    float: left;
+    margin-right: 20px;
+    padding-right: 20px;
+    background: url(../img/bg_sousmenu.png) no-repeat right;
+}
+    #sousmenu li a {
+        font:bold 14px "NeuzeitOffice";
+        color: #4a4b54;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+#sousmenu li.actif {
+}
+    #sousmenu li.actif a {
+        color: #CC0033;
+    }
+/****menu langue****/
+.langue {
+    float:right;
+}
+
+.langue a{
+    padding:3px 3px;
+}
+/****3COLONNES****/
+.left, .right, .middle {
+    width: 30%;
+    min-height: 100px;
+    margin-bottom: 20px;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.middle {
+    margin: 0px auto 20px auto;
+}
+
+/****2COLONNES****/
+.demi {
+    width: 49%;
+}
+
+/****BOUTONS****/
+.btn {
+    width: 120px;
+    margin: 0px 0px 10px 10px;
+    padding:2px 0px;
+    box-shadow:0px 1px 1px 0px #e9e9ed;
+    background:linear-gradient(to bottom, #fafafe 5%, #e6e7ec 100%);
+    background-color:#fafafe;
+    border-radius:3px;
+    border:1px solid #cccccc;
+    display:inline-block;
+    cursor:pointer;
+    color:#62a820;
+    font-family:arial;
+    text-decoration:none;
+    text-shadow:0px 2px 0px #ffffff;
+    float: right;
+}
+    .btn:hover {
+        background:linear-gradient(to bottom, #e6e7ec 5%, #fafafe 100%);
+        background-color:#e6e7ec;
+    }
+    .btn:active {
+        position:relative;
+        top:1px;
+    }
+.no_btn {
+    width: 100%;
+    padding:0px;
+    text-align: left;
+    vertical-align:middle;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #4A4B54;
+}
+    .no_btn:hover{
+        background-color: #e8e3e3;
+        color: #CC0033;
+    }
+/*btn de formulaires*/
+.btn_modif, .btn_suppr, .btn_actu, .btn_deletelink, .btn_dobble, .btn_poubelle, .btn_visio, .btn_deselect, .btn_select, .btn_export {
+    display:block;
+    height:16px;
+    width: 16px;
+    background:none;
+    border:none;
+    background-repeat:no-repeat;
+    color: transparent;
+    cursor: pointer;
+    font-size:0px;
+}
+    .btn_modif {
+        float:left;
+        background-image: url(../img/icon/edit.png);
+    }
+    .btn_actu {
+        float: left;
+        background-image: url(../img/icon/synchro.png);
+    }
+    .btn_deletelink {
+        float: left;
+        background-image: url(../img/icon/deletelink.png);
+    }
+    .btn_select {
+        float: left;
+        background-image: url(../img/icon/select.png);
+    }
+    .btn_suppr {
+        margin-left:10px;
+        background-image: url(../img/icon/cross.png);
+    }
+    .btn_dobble {
+        margin-left:10px;
+        background-image: url(../img/icon/dobble.png);
+    }
+    .btn_poubelle {
+        margin-left:10px;
+        background-image: url(../img/icon/poubelle.gif);
+    }
+    .btn_deselect {
+        margin-left:5px;
+        float: left;
+        background-image: url(../img/icon/deselect.png);
+    }
+    table a.btn_visio {
+        float: left;
+        height:16px;
+        padding: 0px;
+        background-image: url(../img/icon/loupe.png);
+    }
+    .btn_export {
+        margin-left:5px;
+        float: left;
+        background-image: url(../img/icon/excel.png);
+    }
+
+/****TABLEAU de liste****/
+.table {
+    width: 100%;
+    margin-bottom: 10px;
+    background-color:#c9c0c0;
+}
+
+.table tr {
+    height:24px;
+}
+.table tbody tr:nth-child(2n) {
+    background-color:#ddecff;
+}
+.table tbody tr:nth-child(2n+1) {
+    background-color:#e9e9ed;
+}
+    .table tbody tr.select {
+        font-weight: bold;
+        background-color:#ffdde3;
+    }
+
+.table tr.gris {
+    background-color:#e8e3e3;
+    color: #999;
+}
+
+.table th, .table td {
+    height:24px;
+    padding:0px 5px;
+    border-right: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    line-height: 1.4;
+    overflow: hidden;
+}
+
+.table nobr {
+    width: 430px;
+    overflow: hidden;
+}
+.table a {
+    display:block;
+    padding-top: 3px;
+    vertical-align:middle;
+    text-decoration: none;
+}
+    .table a:hover{
+        background-color: #e8e3e3;
+    }
+    .table a.select {
+        font-weight:bold;
+    }
+    
+/****TABLEAU de description****/
+.tableur {
+    width: 100%; 
+    border:1px solid #a7a7a7;
+    margin-bottom: 15px;
+}
+
+.tableur td {
+    padding:5px;
+    border:1px solid #a7a7a7;
+    vertical-align: top;
+}
+
+/****FORMULAIRES****/
+form {
+    min-height: 150px;
+}
+    table form, form[action] {
+        min-height: 0px;
+    }
+    form.action {
+        min-height: 0px;
+        height: 30px;
+    }
+    form.synchro {
+        margin-top:50px;
+    }
+    
+label {
+    /*width: 130px;*/
+    font-style: italic;
+    color: #777;
+    display: block;
+    /*float: right;*/   
+}
+
+label.radio {
+    display: block;
+    float: left;
+}
+
+input[type="text"], input[type="email"], input[type="date"], textarea, select {
+    width: 99%;
+    margin-bottom: 10px;
+    background: none;
+    border: none;
+    border: 1px solid #babac0;
+    font-family: Helvetica,Arial,Verdana,sans-serif;
+    font-size: 12px;
+}
+::-webkit-input-placeholder { font-style: italic; }
+:-moz-placeholder { font-style: italic; }
+::-moz-placeholder { font-style: italic; }
+:-ms-input-placeholder { font-style: italic; }
+
+select {
+    width: 100%;
+    background:linear-gradient(to bottom, #fafafe 5%, #e6e7ec 100%);
+}
+
+input[type="checkbox"] {
+    float: none;
+    background: none;
+    border: none;
+    border: 1px solid #babac0;
+}
+
+textarea {
+    height: 80px;
+}
+
+form div span:nth-last-child(1) {
+    margin-bottom:10px;
+}
+/*Style pour taille des blocs*/
+input.input21, select.input21, .input21 {
+    width: 48%;
+    float: left;
+}
+
+input.input22, select.input22, .input22 {
+    width: 48%;
+    float: right;
+}
+
+.input31, input.input31, select.input31 {
+    width: 31%;
+    float: left;
+}
+
+.input32, input.input32 {
+    float: left;
+    width: 31%;
+    margin-left: 2%;
+}
+
+.input33, input.input33 {
+    width: 31%;
+    float: right;
+    margin-bottom: 10px;
+}
+
+.input36, input.input36 {
+    float: left;
+    width: 64%;
+    margin-left: 2%;
+}
+
+/*style pour les formulaires de synchro*/
+.synchro input[type="text"] {
+    width: 95%;
+    padding-top: 3px;
+}
+    .synchro input[type="checkbox"] {
+        float: none;
+        margin-left: -20px;
+        margin-top: 2px;
+    }
+
+.synchro select {
+    width: 95%;
+}
+
+/*RTE*/
+div[role="menubar"] {
+    display: none;
+}
+
+div.mce-statusbar .mce-container-body {
+    display: none;
+}
+
+div.mce-panel {
+    background: none;
+    border: none;
+}
+
+div.mce-panel iframe, .div_textarea {
+    margin-bottom: 10px;
+    border: 1px solid #babac0;
+}
+
+.div_textarea {
+    padding:3px;
+}
+
+div.mce-panel iframe body {
+    margin: 2px;
+}
+
+div.mce-panel iframe p {
+    margin: 0px 0px 5px 0px;
+}
+
+.mce-flow-layout-item.mce-last {
+    float:right;
+    margin-top: -17px;
+}
+
+.mce-toolbar-grp {
+    position: absolute;
+    right: 0%;
+}
+
+/*Style des éléments d'un formulaire dans un tableau class="tableur"*/
+
+.tableur input {
+    width: 100%;
+    margin: 0px;
+    border: none;
+}
+
+.tableur label {
+    color: #000;
+    font-style: normal;
+}
+
+.tableur div.mce-panel iframe {
+    margin-bottom: 0px;
+    border: none;
+}
+
+.tableur div.mce-panel iframe body {
+    margin: 0px;
+}
+
+div.div_td {
+    display: table-cell;
+    width: 15%;
+}
+
+/*menu déroulant*/
+
+.menu, .sousmenu{
+    text-align:center;
+}
+.menu{
+    height:18px;
+    padding:2px 0;
+    cursor: pointer;
+}
+.sousmenu{
+}
+.menu a{
+    display:block;
+    width:100%;
+    height:100%;
+}
+.sousmenu a{
+    display:block;
+    width:100%;
+    height:100%;
+}
+
+/*** Eléments visible / caché pour le print ***/
+#global .info_visible_screen {
+    display: block;
+}
+#global .info_visible_print {
+    display: none;
+}

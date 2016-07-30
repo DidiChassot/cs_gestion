@@ -1,0 +1,44 @@
+/*
+This CSS resource incorporates links to font software which is the valuable copyrighted
+property of Monotype Imaging and/or its suppliers. You may not attempt to copy, install,
+redistribute, convert, modify or reverse engineer this font software. Please contact Monotype
+Imaging with any questions regarding Web Fonts:  http://webfonts.fonts.com
+*/
+@font-face{
+    font-family:"NeuzeitOffice";
+    src:url("fonts/909baf68-122c-4647-9c58-387e4f99a8fa.eot?#iefix");
+    src:url("fonts/909baf68-122c-4647-9c58-387e4f99a8fa.eot?#iefix") format("eot"),
+    url("fonts/e09c95e3-9315-4143-a5ab-89c343ae2daf.woff") format("woff"),
+    url("fonts/8bb8d9b6-2a36-4b30-8c57-8a26e029c184.ttf") format("truetype"),
+    url("fonts/f0d10576-e6a5-476d-9c38-34fd9991d732.svg#f0d10576-e6a5-476d-9c38-34fd9991d732") format("svg");
+    font-weight:normal;
+    font-style:normal;
+}
+@font-face{
+    font-family:"NeuzeitOffice";
+    src:url("fonts/c6ae9274-943e-44d1-9ab3-4376436ac89f.eot?#iefix");
+    src:url("fonts/c6ae9274-943e-44d1-9ab3-4376436ac89f.eot?#iefix") format("eot"),
+    url("fonts/f9d6b13c-61e5-477f-8881-68de7931f7f6.woff") format("woff"),
+    url("fonts/23055978-29cf-4f6f-9197-3286795e818f.ttf") format("truetype"),
+    url("fonts/4da353a5-f3aa-4509-93f9-07892249af8e.svg#4da353a5-f3aa-4509-93f9-07892249af8e") format("svg");
+    font-weight: bold;
+}
+@font-face{
+    font-family:"NeuzeitOffice";
+    src:url("fonts/81352ebd-2f19-4204-a1e1-023b7505d2b8.eot?#iefix");
+    src:url("fonts/81352ebd-2f19-4204-a1e1-023b7505d2b8.eot?#iefix") format("eot"),
+    url("fonts/ad0a9783-a267-4f04-80c1-1e768b790dd5.woff") format("woff"),
+    url("fonts/33efc251-bef6-4b96-88b3-c2ff3d20b413.ttf") format("truetype"),
+    url("fonts/e85c896f-1bec-417c-980b-7ae501e7c7cb.svg#e85c896f-1bec-417c-980b-7ae501e7c7cb") format("svg");
+    font-style: italic;
+}
+@font-face{
+    font-family:"NeuzeitOffice";
+    src:url("fonts/c55dfc47-8c45-4213-a524-13a8905f2984.eot?#iefix");
+    src:url("fonts/c55dfc47-8c45-4213-a524-13a8905f2984.eot?#iefix") format("eot"),
+    url("fonts/b7e0a47a-c01a-460b-9660-078b2c65c3da.woff") format("woff"),
+    url("fonts/4e840e41-bdc7-44c7-ac28-822d04917c05.ttf") format("truetype"),
+    url("fonts/9b7a3277-b00c-4fad-8e1a-68d38c59425b.svg#9b7a3277-b00c-4fad-8e1a-68d38c59425b") format("svg");
+    font-style:italic;
+    font-weight:bold;
+}

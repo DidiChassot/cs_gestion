@@ -1,0 +1,73 @@
+/*** CSS programmation print **
+Cindy Chassot 01.04.2015
+©Cinémathèque suisse
+*/
+#global {
+    width: 750px;
+}
+
+.left, .middle, .right {
+    float: none;
+    width: 750px;
+}
+
+.left form[name~="select_bulletin"] {
+    display: none;
+}
+
+/*PM2*/
+#global .info_visible_screen {
+    display: none;
+}
+#global .info_visible_print {
+    display: block;
+}
+
+table {
+    /*page-break-inside: avoid;*/
+    margin: 0;
+     /*page-break-before: always;*/
+}
+
+.block {
+    display: block;
+    clear: both;
+    page-break-before: always;
+}
+
+.block select {
+    display: none;
+}
+.select {
+    color: #1da96d;
+}
+
+
+
+/*PM3*/
+#col_left ul li div {
+    display: none;
+}
+#col_left {
+    width: 30%;
+    /*float: right;*/
+    /*position: fixed;*/
+    bottom: 0;
+}
+
+#col_left .table, #col_left form {
+    display: none;
+}
+
+#external-events {
+    clear: both;
+}
+
+#col_right {
+    display: none;
+}
+
+.fc-toolbar {
+    display: none;
+    visibility: hidden;
+}

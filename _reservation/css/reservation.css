@@ -1,0 +1,106 @@
+/*** CSS spécial réservation **
+Cindy Chassot 29.07.2015
+©Cinémathèque suisse
+*/
+h3.color-1 {
+    color: #dd0000;
+}
+h3.color-2 {
+    color: #0099ee;
+}
+h3.color-3 {
+    color: #009977;
+}
+h3.color-4 {
+    color: #ee77aa;
+}
+h3.color-5 {
+    color: #ffbb22;
+}
+h3.color-6 {
+    color: #aa6655;
+}
+h3.color-7 {
+    color: #005599;
+}
+h3.color-8 {
+    color: #ee7766;
+}
+h3.color-9 {
+    color: #774422;
+}
+h3.color-10 {
+    color: #aacc22;
+}
+h3.color-11 {
+    color: #dd0066;
+}
+h3.color-12 {
+    color: #33bbbb;
+}
+h3.color-13 {
+    color: #777777;
+}
+h3.color-14{
+    color: #bbbbbb;
+}
+span.color-1 {
+    border-bottom: 2px solid #dd0000;
+    font-size:14px;
+}
+span.color-2 {
+    border-bottom: 2px solid #0099ee;
+    font-size:14px;
+}
+span.color-3 {
+    border-bottom: 2px solid #009977;
+    font-size:14px;
+}
+span.color-4 {
+    border-bottom: 2px solid #ee77aa;
+    font-size:14px;
+}
+span.color-5 {
+    border-bottom: 2px solid #ffbb22;
+    font-size:14px;
+}
+span.color-6 {
+    border-bottom: 2px solid #aa6655;
+    font-size:14px;
+}
+span.color-7 {
+    border-bottom: 2px solid #005599;
+    font-size:14px;
+}
+span.color-8 {
+    border-bottom: 2px solid #ee7766;
+    font-size:14px;
+}
+span.color-9 {
+    border-bottom: 2px solid #774422;
+    font-size:14px;
+}
+span.color-10 {
+    border-bottom: 2px solid #aacc22;
+    font-size:14px;
+}
+span.color-11 {
+    border-bottom: 2px solid #dd0066;
+    font-size:14px;
+}
+span.color-12 {
+    border-bottom: 2px solid #33bbbb;
+    font-size:14px;
+}
+span.color-13 {
+    border-bottom: 2px solid #777777;
+    font-size:14px;
+}
+span.color-14{
+    border-bottom: 2px solid #bbbbbb;
+    font-size:14px;
+}
+
+#contentpage {
+    padding: 20px;
+}
